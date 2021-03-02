@@ -1,0 +1,35 @@
+<section class="container">
+    <article class="row">
+        <section class="col-md-6 offset-md-3 mt-5 login-border p-3">
+            <div class="text-center">
+                <h2>Iniciar sesión</h2>
+            </div>
+            <form [formGroup]="form">
+                <section class="form-group">
+                    <label for="email">Email</label>
+                    <input class="form-control" type="text" id="email" autofocus formControlName="email">
+                </section>
+                <section class="form-group" *ngIf="hiddenPass">
+                    <label for="password">Password</label>
+                    <input class="form-control" type="password" id="password" formControlName="password">
+                </section>
+                <section class="form-group text-center" *ngIf="hiddenPass">
+                    <button class="btn btn-secondary mx-1" (click)="forgotPass()">
+                        Olvidé clave
+                    </button>
+                    <button class="btn btn-success" [disabled]="!form.valid" (click)="login()">
+                        Ingresar
+                    </button>
+                </section>
+                <section class="form-group text-center" *ngIf="!hiddenPass">
+                    <button class="btn btn-secondary mx-1" (click)="goBack()">
+                        Atras
+                    </button>
+                    <button class="btn btn-success" (click)="send()">
+                        Recuperar
+                    </button>
+                </section>
+            </form>
+        </section>
+    </article>
+</section>
